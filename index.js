@@ -21,43 +21,48 @@
           try {
             const cw = target.contentWindow;
             console.log('✅ ****contentWindow available:', cw);
-  
-            // Draw green and red horizontal lines
-            cw.TradingViewApi.activeChart().createShape(
-              { price: 0.8408 },
-              {
-                shape: 'horizontal_line',
-                lock: true,
-                disableSelection: true,
-                disableSave: true,
-                disableUndo: true,
-                overrides: { linecolor: 'green' }
-              }
-            );
-  
-            cw.TradingViewApi.activeChart().createShape(
-              { price: 0.8404 },
-              {
-                shape: 'horizontal_line',
-                lock: true,
-                disableSelection: true,
-                disableSave: true,
-                disableUndo: true,
-                overrides: { linecolor: 'red' }
-              }
-            );
-  
-            cw.TradingViewApi.activeChart().createShape(
-              { price: 0.8400 },
-              {
-                shape: 'horizontal_line',
-                lock: true,
-                disableSelection: true,
-                disableSave: true,
-                disableUndo: true,
-                overrides: { linecolor: 'blue' }
-              }
-            );
+            
+
+            setTimeout(() => {
+
+                // Draw green and red horizontal lines
+                cw.TradingViewApi.activeChart().createShape(
+                  { price: 0.8408 },
+                  {
+                    shape: 'horizontal_line',
+                    lock: true,
+                    disableSelection: true,
+                    disableSave: true,
+                    disableUndo: true,
+                    overrides: { linecolor: 'green' }
+                  }
+                );
+      
+                cw.TradingViewApi.activeChart().createShape(
+                  { price: 0.8404 },
+                  {
+                    shape: 'horizontal_line',
+                    lock: true,
+                    disableSelection: true,
+                    disableSave: true,
+                    disableUndo: true,
+                    overrides: { linecolor: 'red' }
+                  }
+                );
+      
+                cw.TradingViewApi.activeChart().createShape(
+                  { price: 0.8400 },
+                  {
+                    shape: 'horizontal_line',
+                    lock: true,
+                    disableSelection: true,
+                    disableSave: true,
+                    disableUndo: true,
+                    overrides: { linecolor: 'blue' }
+                  }
+                );
+            },5000);
+
   
             // Optionally check for available API references
             console.log('📊 ****tvWidget or TradingViewApi:', cw?.tvWidget || cw?.TradingViewApi);
