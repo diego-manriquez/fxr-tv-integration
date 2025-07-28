@@ -1,4 +1,6 @@
 (function () {
+    console.log('📦 ****Script FXR iniciado: buscando iframe de TradingView...');
+  
     const INTERVAL = 500; // Milisegundos entre intentos
     const MAX_WAIT = 15000; // Tiempo máximo total (15 segundos)
     let waited = 0;
