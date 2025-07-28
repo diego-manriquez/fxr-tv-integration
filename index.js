@@ -1,8 +1,8 @@
 (function () {
-    console.log('📦 ****Script FXR iniciado: buscando iframe de TradingView...');
+    console.log('📦 ****FXR Script started: searching for TradingView iframe...');
   
-    const INTERVAL = 500;
-    const MAX_WAIT = 30000;
+    const INTERVAL = 500; // Milliseconds between attempts
+    const MAX_WAIT = 30000; // Maximum wait time (30 seconds)
     let waited = 0;
     let intervalId = null;
   
@@ -14,35 +14,72 @@
   
       if (target) {
         clearInterval(intervalId);
-        console.log('✅ ****Iframe encontrado:', target);
+        console.log('✅ ****Iframe found:', target);
   
-        // Esperar a que termine de cargar su contenido
+        // Wait for the iframe content to finish loading
         target.addEventListener('load', () => {
           try {
             const cw = target.contentWindow;
-            console.log('✅ ****contentWindow disponible:', cw);
+            console.log('✅ ****contentWindow available:', cw);
   
-            // Puedes intentar inspeccionar si tiene TradingViewApi o tvWidget
-            console.log('📊 ****¿tvWidget?:', cw?.tvWidget || cw?.TradingViewApi);
+            // Draw green and red horizontal lines
+            cw.TradingViewApi.activeChart().createShape(
+              { price: 0.8408 },
+              {
+                shape: 'horizontal_line',
+                lock: true,
+                disableSelection: true,
+                disableSave: true,
+                disableUndo: true,
+                overrides: { linecolor: 'green' }
+              }
+            );
+  
+            cw.TradingViewApi.activeChart().createShape(
+              { price: 0.8404 },
+              {
+                shape: 'horizontal_line',
+                lock: true,
+                disableSelection: true,
+                disableSave: true,
+                disableUndo: true,
+                overrides: { linecolor: 'red' }
+              }
+            );
+  
+            cw.TradingViewApi.activeChart().createShape(
+              { price: 0.8400 },
+              {
+                shape: 'horizontal_line',
+                lock: true,
+                disableSelection: true,
+                disableSave: true,
+                disableUndo: true,
+                overrides: { linecolor: 'blue' }
+              }
+            );
+  
+            // Optionally check for available API references
+            console.log('📊 ****tvWidget or TradingViewApi:', cw?.tvWidget || cw?.TradingViewApi);
           } catch (e) {
-            console.warn('🚫 ****No se pudo acceder al contentWindow:', e);
+            console.warn('🚫 ****Failed to access contentWindow:', e);
           }
         });
   
-        // Si ya estaba cargado antes del evento 'load'
+        // If the iframe was already loaded before the 'load' event
         if (target.contentWindow?.document?.readyState === 'complete') {
-          // Forzar el acceso inmediato si ya cargó
+          // Force immediate access
           try {
-            console.log('✅ ****contentWindow (cargado previamente):', target.contentWindow);
-            console.log('📊 ****¿tvWidget?:', target.contentWindow?.tvWidget || target.contentWindow?.TradingViewApi);
+            console.log('✅ ****contentWindow (already loaded):', target.contentWindow);
+            console.log('📊 ****tvWidget or TradingViewApi:', target.contentWindow?.tvWidget || target.contentWindow?.TradingViewApi);
           } catch (e) {
-            console.warn('🚫 ****Error accediendo al contentWindow (pre-load):', e);
+            console.warn('🚫 ****Error accessing contentWindow (pre-load):', e);
           }
         }
       } else {
         waited += INTERVAL;
         if (waited >= MAX_WAIT) {
-          console.warn('⏰ ****No se encontró ningún iframe con id que comience con "tradingview_" en el tiempo esperado.');
+          console.warn('⏰ ****No iframe with ID starting with "tradingview_" was found in the expected time.');
           clearInterval(intervalId);
         }
       }
