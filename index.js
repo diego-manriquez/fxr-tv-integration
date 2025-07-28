@@ -2,7 +2,7 @@
     console.log('📦 ****Script FXR iniciado: buscando iframe de TradingView...');
   
     const INTERVAL = 500;
-    const MAX_WAIT = 15000;
+    const MAX_WAIT = 30000;
     let waited = 0;
     let intervalId = null;
   
