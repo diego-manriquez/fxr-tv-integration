@@ -24,7 +24,7 @@
             
 
             setTimeout(() => {
-
+                console.log('📊 ****Creating shapes on the TradingView chart...');
                 // Draw green and red horizontal lines
                 cw.tradingViewApi.activeChart().createShape(
                   { price: 0.8408 },
