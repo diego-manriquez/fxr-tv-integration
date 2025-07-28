@@ -14,6 +14,7 @@
   
       if (target) {
         console.log('✅ ****Iframe encontrado:', target);
+        console.log('✅ ****Iframe encontrado:', target.contentWindow);
         clearInterval(intervalId);
       } else {
         waited += INTERVAL;
