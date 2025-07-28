@@ -26,7 +26,7 @@
             setTimeout(() => {
 
                 // Draw green and red horizontal lines
-                cw.TradingViewApi.activeChart().createShape(
+                cw.tradingViewApi.activeChart().createShape(
                   { price: 0.8408 },
                   {
                     shape: 'horizontal_line',
@@ -38,7 +38,7 @@
                   }
                 );
       
-                cw.TradingViewApi.activeChart().createShape(
+                cw.tradingViewApi.activeChart().createShape(
                   { price: 0.8404 },
                   {
                     shape: 'horizontal_line',
@@ -50,7 +50,7 @@
                   }
                 );
       
-                cw.TradingViewApi.activeChart().createShape(
+                cw.tradingViewApi.activeChart().createShape(
                   { price: 0.8400 },
                   {
                     shape: 'horizontal_line',
