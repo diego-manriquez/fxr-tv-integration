@@ -20,7 +20,7 @@
         target.addEventListener('load', () => {
           try {
             const cw = target.contentWindow;
-            console.log('✅ ****contentWindow available:', cw);
+            console.log('✅ ****!!contentWindow available:', cw);
             
 
             setTimeout(() => {
